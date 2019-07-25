@@ -128,7 +128,7 @@
       },
       async getWeatherData(){
         try{
-          const { data: { list } } = await axios.get(`http://api.openweathermap.org/data/2.5/forecast?id=551487&apikey=${this.apikey}&cnt=24&lang=ru&units=metric`);
+          const { data: { list } } = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?id=551487&apikey=${this.apikey}&cnt=24&lang=ru&units=metric`);
 
 
           let days = list.map((d, i) => ({
