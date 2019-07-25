@@ -154,6 +154,8 @@
           console.log(e);
           if(e.response && e.response.data){
             this.errorText = e.response.data.message;
+          }else{
+            this.errorText = e.message || e;
           }
         }
       }
