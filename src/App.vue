@@ -1,5 +1,6 @@
 <template>
-  <div id="app">
+  <div id="app" 
+    v-touch:swipe="swipe">
     <div class="loading" v-if="days.length == 0">
       <div class="error" v-if="errorText">
         <div class="error-header">Ошибка!</div>
@@ -118,9 +119,23 @@
     },
 
     methods: {
-      switchDay(i){
+      swipe(e){
         this.prevActive = this.active; 
-        this.active = i;
+
+        if(e == 'left'){
+          if(this.active + 1 < this.days.length)
+            this.active++;
+        }
+        else{
+          if(this.active - 1 > -1)
+            this.active--;
+        }
+      },
+      switchDay(i){
+        if(i > -1 && i < this.days.length){
+          this.prevActive = this.active; 
+          this.active = i;
+        }
       },
       ltAfterTomorrow(date){
         return date.isBefore(this.tomorrow)
