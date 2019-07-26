@@ -101,6 +101,8 @@
           'Сегодня', 'Завтра', 'Послезавтра'
         ],
 
+        tomorrow: moment().add(2, 'days'),
+
         errorText: null
       }
     },
@@ -121,7 +123,7 @@
         this.active = i;
       },
       ltAfterTomorrow(date){
-        return moment().add(2, 'days').isAfter(date)
+        return date.isBefore(this.tomorrow)
       },
       capitalize(text){
         return text.split('')[0].toUpperCase() + text.slice(1);
@@ -130,6 +132,7 @@
         try{
           const { data: { list } } = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?id=551487&apikey=${this.apikey}&cnt=24&lang=ru&units=metric`);
 
+          this.tomorrow.set('hour', 23);
 
           let days = list.map((d, i) => ({
             date: moment(d.dt*1000),
@@ -148,8 +151,6 @@
 
           this.days = this.days
             .concat(days.filter(d => d.hours == '12' && this.ltAfterTomorrow(d.date)));
-
-          console.log(this.days);
         }catch(e){
           console.log(e);
           if(e.response && e.response.data){
