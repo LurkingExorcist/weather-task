@@ -126,7 +126,7 @@
           if(this.active + 1 < this.days.length)
             this.active++;
         }
-        else{
+        else if(e == 'right'){
           if(this.active - 1 > -1)
             this.active--;
         }
