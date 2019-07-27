@@ -126,6 +126,7 @@ $default: #3EB1DF;
   font-size: 2vh;
 
   transition: background-color 1s;
+  line-height: 2.5vh;
   
   &:hover {
   	background-color: mix($active, $default, 50%);
@@ -144,6 +145,7 @@ $default: #3EB1DF;
 	fill: white;
 	width: 13vh;
 	margin: auto;
+	padding-top: 0.5vh;
 }
 
 
@@ -218,15 +220,15 @@ $default: #3EB1DF;
 }
 
 .ellipse:hover {
-	@include ellipseColor(1);
+	@include ellipseColor(2);
 	.ellipse {
-		@include ellipseColor(2);
+		@include ellipseColor(3);
 		.ellipse {
-			@include ellipseColor(3);
+			@include ellipseColor(4);
 			.ellipse {
-				@include ellipseColor(4);
+				@include ellipseColor(5);
 				.ellipse {
-					@include ellipseColor(5);
+					@include ellipseColor(6);
 				}
 			}
 		}
